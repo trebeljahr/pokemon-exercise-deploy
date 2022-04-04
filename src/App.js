@@ -10,6 +10,9 @@ function App() {
   const [pokemon, setPokemon] = useState();
 
   useEffect(() => {
+    console.log(process.env.NODE_ENV);
+    console.log(baseAPIUrl);
+
     async function fetchPokemon() {
       const response = await fetch(`${baseAPIUrl}/api/pokemon`);
       const data = await response.json();
