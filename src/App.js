@@ -1,12 +1,17 @@
 import "./App.css";
 import { useEffect, useState } from "react";
 
+const baseAPIUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://poke-app-fullstack.herokuapp.com"
+    : "http://localhost:5005";
+
 function App() {
   const [pokemon, setPokemon] = useState();
 
   useEffect(() => {
     async function fetchPokemon() {
-      const response = await fetch("http://localhost:5005/api/pokemon");
+      const response = await fetch(`${baseAPIUrl}/api/pokemon`);
       const data = await response.json();
       console.log(data);
       if (data.pokemon) {
